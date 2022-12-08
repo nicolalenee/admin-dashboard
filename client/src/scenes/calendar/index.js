@@ -1,9 +1,9 @@
 import { useState } from "react";
 import FullCalendar, { formatDate } from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/timegrid";
+import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
+import listPlugin from "@fullcalendar/list";
 import {
   Box,
   List,
@@ -35,10 +35,11 @@ const Calendar = () => {
       });
     }
   };
+
   const handleEventClick = (selected) => {
     if (
       window.confirm(
-        `Are you sure you want to delete the event '${selected.event.title}'?`
+        `Are you sure you want to delete the event '${selected.event.title}'`
       )
     ) {
       selected.event.remove();
@@ -47,7 +48,8 @@ const Calendar = () => {
 
   return (
     <Box m="20px">
-      <Header title="CALENDAR" subtitle="Full Calendar Interactive Page" />
+      <Header title="Calendar" subtitle="Full Calendar Interactive Page" />
+
       <Box display="flex" justifyContent="space-between">
         {/* CALENDAR SIDEBAR */}
         <Box
@@ -85,15 +87,15 @@ const Calendar = () => {
         </Box>
 
         {/* CALENDAR */}
-        <Box flex="1 1 1005" ml="15px">
+        <Box flex="1 1 100%" ml="15px">
           <FullCalendar
             height="75vh"
-            plugins={{
+            plugins={[
               dayGridPlugin,
               timeGridPlugin,
               interactionPlugin,
               listPlugin,
-            }}
+            ]}
             headerToolbar={{
               left: "prev,next today",
               center: "title",
@@ -103,13 +105,21 @@ const Calendar = () => {
             editable={true}
             selectable={true}
             selectMirror={true}
-            dayMaxEvent={true}
+            dayMaxEvents={true}
             select={handleDateClick}
             eventClick={handleEventClick}
             eventsSet={(events) => setCurrentEvents(events)}
             initialEvents={[
-              { id: "1234", title: "All-day event", date: "2022-12-14" },
-              { id: "4321", title: "Timed event", date: "2022-12-28" },
+              {
+                id: "12315",
+                title: "All-day event",
+                date: "2022-09-14",
+              },
+              {
+                id: "5123",
+                title: "Timed event",
+                date: "2022-09-28",
+              },
             ]}
           />
         </Box>
