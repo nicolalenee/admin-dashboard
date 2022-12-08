@@ -9,7 +9,7 @@ import Invoices from "./scenes/invoices";
 import Contacts from "./scenes/contacts";
 import Form from "./scenes/form";
 import Line from "./scenes/line";
-import Pie from "./scenes/Pie";
+import Pie from "./scenes/pie";
 import Bar from "./scenes/bar";
 import FAQ from "./scenes/faq";
 import Geography from "./scenes/geography";
