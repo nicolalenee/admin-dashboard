@@ -1,10 +1,9 @@
-import { Box, Button, TextField } from '@mui/material';
-import { Formik } from 'formik';
-import * as yup from 'yup';
-import { useMediaQuery } from '@mui/material/useMediaQuery'
-import Header from '../../components/Header';
+import { Box, Button, TextField, useMediaQuery } from "@mui/material";
+import { Formik } from "formik";
+import * as yup from "yup";
+import Header from "../../components/Header";
 
-const initialValues ={
+const initialValues = {
   firstName: "",
   lastName: "",
   email: "",
@@ -12,8 +11,8 @@ const initialValues ={
   address1: "",
   address2: "",
 };
-const phoneRegExp = 
-/^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
+const phoneRegExp =
+  /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
 // define validation logic for each field
 const userSchema = yup.object().shape({
   firstName: yup.string().required("required"),
@@ -32,20 +31,32 @@ const Form = () => {
 
   const handleFormSubmit = (values) => {
     console.log(values);
-  }
+  };
   return (
     <Box m="20px">
       <Header title="CREATE USER" subtitle="Create a New User Profile" />
-      <Formik 
+      <Formik
         onSubmit={handleFormSubmit}
         initialValues={initialValues}
         validationSchema={userSchema}
       >
-        {({ values, errors, touched, handleBlur, handleChange, handleSubmit })=> (
+        {({
+          values,
+          errors,
+          touched,
+          handleBlur,
+          handleChange,
+          handleSubmit,
+        }) => (
           <form onSubmit={handleSubmit}>
-            <Box display="grid" gap="30px" gridTemplateCOlumns="repeat(4, minmax(0, 1fr))" sx={{
-              "& > div": { gridColumn: isNonMobile ? undefined : "span 4"}
-            }} >
+            <Box
+              display="grid"
+              gap="30px"
+              gridTemplateCOlumns="repeat(4, minmax(0, 1fr))"
+              sx={{
+                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+              }}
+            >
               <TextField
                 fullWidth
                 variant="filled"
@@ -124,7 +135,6 @@ const Form = () => {
                 helperText={touched.address2 && errors.address2}
                 sx={{ gridColumn: "span 4" }}
               />
-              
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
@@ -135,7 +145,7 @@ const Form = () => {
         )}
       </Formik>
     </Box>
-  )
+  );
 };
 
 export default Form;
