@@ -85,20 +85,6 @@ const FAQ = () => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-
-      <Accordion defaultExpanded>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography color={colors.greenAccent[500]} variant="h5">
-            A Ridiculously Important question:
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
     </Box>
   );
 };
