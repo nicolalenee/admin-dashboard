@@ -32,7 +32,7 @@ export const useMode = () => {
   return [theme, colorMode];
 };
 ```
-Here, create a context to trigger a toggle between the light and dark options. We create another function that utilizes the `useMemo()` method provided by React to load the context on page load. We pass this theme configuration down at the top-level of our components to render the theme.  
+Here, we create a context to trigger a toggle between the light and dark options. We create another function that utilizes the `useMemo()` method provided by React to load the context on page load. We pass this configuration down at the top-level of our components to render the theme.  
 
 ### Data Visualization
 To display our interactive charts we used the Nivo library. Nivo's website allows us to configure our data visualization and generates a boilerplate codee for us to use. The website also supplies us with sample data that is needed to satisfy what the visualizations need. This pre-determined data was used to create the visualizations within our app where it would usually be servered from the backend. 
