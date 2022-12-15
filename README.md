@@ -8,6 +8,7 @@
  
  ## Tools
 Because there were so many reused components through the different pages of this application, the React framework was used to render said compoonent across multiple pages.    
+
 ### Design
 Material UI was used to design the visual aesthetic of the application. Material UI offers pre-built components that provide industry standard displays while also allowing these components to be uniquely altered to fit our own particular needs. To implement our own customized theme, we created a context using React that contained color tokens that we wanted to use within the app. Then we passed these into `createTheme` function provided by MUI.
 
@@ -32,8 +33,38 @@ export const useMode = () => {
   return [theme, colorMode];
 };
 ```
-Here, we create a context to trigger a toggle between the light and dark options. We create another function that utilizes the `useMemo()` method provided by React to load the context on page load. We pass this configuration down at the top-level of our components to render the theme.  
+Here, we create a context to trigger a toggle between the light and dark options. We create another function that utilizes the `useMemo()` method provided by React to load the context on page load. We pass this configuration down at the top-level of our components to render the theme. We can see an example, of this in play in the dashboard component. In the code below, we make a call to our theme and the color tokens we defined. This allows us to change the colors of our components within the component props and the system props that MUI provides with the `sx` property.
+
+```javascript
+const Dashboard = () => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+
+  return (
+    <Box m="20px">
+      {/* HEADER */}
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
+
+        <Box>
+          <Button
+            sx={{
+              backgroundColor: colors.blueAccent[700],
+              color: colors.grey[100],
+              fontSize: "14px",
+              fontWeight: "bold",
+              padding: "10px 20px",
+            }}
+          >
+            <DownloadOutlinedIcon sx={{ mr: "10px" }} />
+            Download Reports
+          </Button>
+        </Box>
+      </Box>
+      ...
+   )
+   ```
 
 ### Data Visualization
-To display our interactive charts we used the Nivo library. Nivo's website allows us to configure our data visualization and generates a boilerplate codee for us to use. The website also supplies us with sample data that is needed to satisfy what the visualizations need. This pre-determined data was used to create the visualizations within our app where it would usually be servered from the backend. 
+To display our interactive charts we used the Nivo library. Nivo's website allows us to configure our data visualization and generates a boilerplate codee for us to use. The website also supplies us with sample data that is needed to satisfy what the visualizations need. This pre-determined data was used to create the visualizations within our app where it would usually be served from the backend. 
 
